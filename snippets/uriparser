@@ -1,0 +1,20 @@
+
+FetchContent_Declare(
+	uriparser
+	GIT_REPOSITORY	https://github.com/uriparser/uriparser.git
+	GIT_TAG			uriparser-0.9.5
+	GIT_SHALLOW		TRUE
+)
+FetchContent_GetProperties(uriparser)
+if(NOT uriparser_POPULATED)
+  FetchContent_Populate(uriparser)
+  option(BUILD_SHARED_LIBS "Build shared libraries (rather than static ones)" OFF)
+  option(URIPARSER_BUILD_DOCS "Build API documentation (requires Doxygen, Graphviz, and (optional) Qt's qhelpgenerator)" OFF)
+  option(URIPARSER_BUILD_TESTS "Build test suite (requires GTest >=1.8.0)" OFF)
+  option(URIPARSER_BUILD_TOOLS "Build tools (e.g. CLI \"uriparse\")" OFF)
+  option(URIPARSER_BUILD_CHAR "Build code supporting data type 'char'" ON)
+  option(URIPARSER_BUILD_WCHAR_T "Build code supporting data type 'wchar_t'" OFF)
+  option(URIPARSER_ENABLE_INSTALL "Enable installation of uriparser" OFF)
+  option(URIPARSER_WARNINGS_AS_ERRORS "Treat all compiler warnings as errors" OFF)
+  add_subdirectory(${uriparser_SOURCE_DIR} ${uriparser_BINARY_DIR})
+endif()

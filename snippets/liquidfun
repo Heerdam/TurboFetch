@@ -1,0 +1,10 @@
+
+FetchContent_Declare(
+		liquidfun
+		GIT_REPOSITORY https://github.com/Heerdam/liquidfun.git
+)
+FetchContent_GetProperties(liquidfun)
+if(NOT liquidfun_POPULATED)
+	FetchContent_Populate(liquidfun)
+	add_subdirectory("${liquidfun_SOURCE_DIR}" "${liquidfun_BINARY_DIR}")
+endif()

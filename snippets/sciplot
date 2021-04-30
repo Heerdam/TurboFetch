@@ -1,0 +1,18 @@
+
+FetchContent_Declare(
+		gp
+		GIT_REPOSITORY https://github.com/sciplot/sciplot.git
+		GIT_SHALLOW TRUE
+		GIT_TAG v0.2.2
+	)
+
+	option(SCIPLOT_BUILD_EXAMPLES "Build examples" OFF)
+	option(SCIPLOT_BUILD_TESTS "Build tests" OFF)
+	option(SCIPLOT_BUILD_DOCS "Build documentation" OFF)
+
+	FetchContent_GetProperties(gp)
+	if(NOT gp_POPULATED)
+		FetchContent_Populate(gp)
+		add_subdirectory("${gp_SOURCE_DIR}" "${gp_BINARY_DIR}")
+	endif()	
+    

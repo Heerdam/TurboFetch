@@ -1,0 +1,20 @@
+
+FetchContent_Declare(
+	lodepng
+	GIT_REPOSITORY https://github.com/lvandeve/lodepng.git
+	GIT_SHALLOW TRUE
+)
+FetchContent_GetProperties(lodepng)
+
+if(NOT lodepng_POPULATED)
+	FetchContent_Populate(lodepng)
+
+	set(LODEPNG_FILES
+		"${lodepng_SOURCE_DIR}/lodepng.cpp"	
+	)
+
+	add_library(lodepng "${LODEPNG_FILES}")
+
+	target_include_directories(tv PUBLIC "${lodepng_SOURCE_DIR}")
+endif()
+

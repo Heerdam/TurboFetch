@@ -1,0 +1,11 @@
+
+	FetchContent_Declare(
+			turbogui
+			GIT_REPOSITORY https://github.com/Heerdam/TurboGUI
+	)
+	FetchContent_GetProperties(turbogui)
+	if(NOT turbogui_POPULATED)
+		FetchContent_Populate(turbogui)
+		add_subdirectory("${turbogui_SOURCE_DIR}" "${turbogui_BINARY_DIR}")
+	endif()
+    
