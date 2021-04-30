@@ -8,7 +8,7 @@ FetchContent_GetProperties(imgui)
 
 if(NOT imgui_POPULATED)
 	FetchContent_Populate(imgui)
-    
+
 	set(IMGUI_FILES
 		"${imgui_SOURCE_DIR}/imgui_demo.cpp"
 		"${imgui_SOURCE_DIR}/imgui_draw.cpp"
@@ -19,5 +19,5 @@ if(NOT imgui_POPULATED)
 
 	add_library(imgui "${IMGUI_FILES}")
 
-	target_include_directories(tv PUBLIC "${imgui_SOURCE_DIR}")
+	target_include_directories(_TARGET_ PUBLIC "${imgui_SOURCE_DIR}")
 endif()

@@ -15,6 +15,6 @@ if(NOT lodepng_POPULATED)
 
 	add_library(lodepng "${LODEPNG_FILES}")
 
-	target_include_directories(tv PUBLIC "${lodepng_SOURCE_DIR}")
+	target_include_directories(_TARGET_ PUBLIC "${lodepng_SOURCE_DIR}")
 endif()
 
