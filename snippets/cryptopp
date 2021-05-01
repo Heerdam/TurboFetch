@@ -1,12 +1,11 @@
 
 FetchContent_Declare(
-	crypto
-	GIT_REPOSITORY 	https://github.com/weidai11/cryptopp.git
-	GIT_TAG			0a1f580
-	GIT_SHALLOW		TRUE
+    crypto
+    GIT_REPOSITORY      https://github.com/weidai11/cryptopp.git
+    GIT_TAG             _TAG_
+    GIT_SHALLOW         TRUE
 )
 FetchContent_GetProperties(crypto)
-
 if(NOT crypto_POPULATED)
   FetchContent_Populate(crypto)
   file(DOWNLOAD "https://raw.githubusercontent.com/noloader/cryptopp-cmake/master/CMakeLists.txt" "${crypto_SOURCE_DIR}/CMakeLists.txt")
