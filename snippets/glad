@@ -10,3 +10,5 @@ FetchContent_Declare(
 )
 FetchContent_GetProperties(glad)
 FetchContent_MakeAvailable(glad)
+
+target_link_libraries(_TARGET_ glad)

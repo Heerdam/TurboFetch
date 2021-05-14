@@ -1,9 +1,11 @@
 
 FetchContent_Declare(
     turbogui
-    GIT_REPOSITORY https://github.com/Heerdam/TurboGUI
+    GIT_REPOSITORY      https://github.com/Heerdam/TurboGUI
     GIT_SHALLOW         TRUE
 )
 FetchContent_GetProperties(turbogui)
 FetchContent_MakeAvailable(turbogui)
+
+target_link_libraries(_TARGET_ turbogui)
     

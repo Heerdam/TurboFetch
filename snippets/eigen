@@ -1,16 +1,14 @@
 
+#Eigen3 3.4
 FetchContent_Declare(
-    Eigen
-    GIT_REPOSITORY      https://gitlab.com/libeigen/eigen.git
-    GIT_TAG             _TAG_
-    GIT_SHALLOW         TRUE
+	eigen3
+	GIT_REPOSITORY      https://gitlab.com/libeigen/eigen.git
+	GIT_SHALLOW         TRUE
+	GIT_TAG             77c66e368c7e355f8be299659f57b0ffcaedb505 
 )
-set(EIGEN_BUILD_DOC OFF FORCE)
-# note: To disable eigen tests,
-# you should put this code in a add_subdirectory to avoid to change
-# BUILD_TESTING for your own project too since variables are directory
-# scoped
-set(BUILD_TESTING OFF FORCE)
-set(EIGEN_BUILD_PKGCONFIG OFF FORCE)
-set( OFF)
-FetchContent_MakeAvailable(Eigen)
+FetchContent_GetProperties(eigen3)
+
+if(NOT eigen3_POPULATED)
+	FetchContent_Populate(eigen3)
+	target_include_directories(_TARGET_ PUBLIC "${eigen3_SOURCE_DIR}")
+endif()

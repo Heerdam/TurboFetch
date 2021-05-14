@@ -18,3 +18,5 @@ if(NOT uriparser_POPULATED)
     option(URIPARSER_WARNINGS_AS_ERRORS "Treat all compiler warnings as errors" OFF)
     add_subdirectory(${uriparser_SOURCE_DIR} ${uriparser_BINARY_DIR})
 endif()
+
+target_link_libraries(_TARGET_ uriparser)

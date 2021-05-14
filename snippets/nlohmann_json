@@ -6,3 +6,5 @@ FetchContent_Declare(json
 )
 FetchContent_GetProperties(json)
 FetchContent_MakeAvailable(json)
+
+target_link_libraries(_TARGET_ nlohmann_json::nlohmann_json)

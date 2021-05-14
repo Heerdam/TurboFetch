@@ -1,12 +1,15 @@
 
 FetchContent_Declare(
-	mrpt
-	GIT_REPOSITORY https://github.com/vioshyvo/mrpt.git
-	GIT_SHALLOW TRUE
+    mrpt
+    GIT_REPOSITORY      https://github.com/vioshyvo/mrpt.git
+    GIT_SHALLOW         TRUE
+    GIT_TAG             _TAG_
 )
 FetchContent_GetProperties(mrpt)
 
 if(NOT mrpt_POPULATED)
-	FetchContent_Populate(mrpt)
-	target_include_directories(tv PUBLIC "${mrpt_SOURCE_DIR}/cpp")
+    FetchContent_Populate(mrpt)
+    target_include_directories(_TARGET_ PUBLIC "${mrpt_SOURCE_DIR}/cpp")
 endif()
+
+target_link_libraries(_TARGET_ mrpt)

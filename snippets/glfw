@@ -11,3 +11,5 @@ FetchContent_Declare(
 )
 FetchContent_GetProperties(glfw)
 FetchContent_MakeAvailable(glfw)
+
+target_link_libraries(_TARGET_ glfw)

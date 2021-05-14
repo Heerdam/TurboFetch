@@ -7,3 +7,5 @@ FetchContent_Declare(
 )
 FetchContent_GetProperties(glm)
 FetchContent_MakeAvailable(glm)
+
+target_link_libraries(_TARGET_ glm)

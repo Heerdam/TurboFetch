@@ -18,3 +18,5 @@ if(NOT imgui_POPULATED)
     add_library(imgui "${IMGUI_FILES}")
     target_include_directories(_TARGET_ PUBLIC "${imgui_SOURCE_DIR}")
 endif()
+
+target_link_libraries(_TARGET_ imgui)

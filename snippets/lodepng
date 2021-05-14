@@ -17,3 +17,4 @@ if(NOT lodepng_POPULATED)
     target_include_directories(_TARGET_ PUBLIC "${lodepng_SOURCE_DIR}")
 endif()
 
+target_link_libraries(_TARGET_ lodepng)

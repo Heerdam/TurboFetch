@@ -9,3 +9,5 @@ FetchContent_Declare(
 )
 FetchContent_GetProperties(sockpp)
 FetchContent_MakeAvailable(sockpp)
+
+target_link_libraries(_TARGET_ sockpp-static)

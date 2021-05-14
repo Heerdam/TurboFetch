@@ -11,3 +11,5 @@ if(NOT libmorton_POPULATED)
     option(BUILD_TESTING "Build unit tests for libmorton" OFF)
     add_subdirectory(${libmorton_SOURCE_DIR} ${libmorton_BINARY_DIR})
 endif()
+
+target_link_libraries(_TARGET_ libmorton)
