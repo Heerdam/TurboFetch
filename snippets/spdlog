@@ -5,7 +5,6 @@ FetchContent_Declare(
     GIT_TAG             _TAG_
     GIT_SHALLOW         TRUE
 )
-FetchContent_GetProperties(spdlog)
 FetchContent_MakeAvailable(spdlog)
 
 target_link_libraries(_TARGET_ spdlog::spdlog)

@@ -9,7 +9,6 @@ FetchContent_Declare(
     GIT_TAG             _TAG_
     GIT_SHALLOW         TRUE
 )
-FetchContent_GetProperties(glfw)
 FetchContent_MakeAvailable(glfw)
 
 target_link_libraries(_TARGET_ glfw)
