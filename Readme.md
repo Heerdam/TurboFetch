@@ -6,6 +6,8 @@ Using `find_package` to add dependencies to a CMake project requires the user to
 
 At some point CMake added `ExternalProject_Add` which can download and build dependencies at configure time, but this doesn't allow for the same flexibility as the newer `FetchContent` module.
 
+It can however sometimes be a bit cumbersome to get the FetchContent usage right, especially with differing conventions in various projects, this is where this snippet copy-paste resource steps in.
+
 Add this to your CMakeLists.txt
 
 ```cmake
