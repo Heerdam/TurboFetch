@@ -1,0 +1,67 @@
+# --------------- SFML ---------------
+message(STATUS "Fetching SFML...")
+FetchContent_Declare(
+	SFML
+	GIT_REPOSITORY https://github.com/SFML/SFML.git
+	GIT_TAG 2.6.x
+)
+FetchContent_MakeAvailable(SFML)
+
+# ------------------ IMGUI ------------------
+message(STATUS "Fetching imgui...")
+FetchContent_Declare(
+    imgui
+    GIT_REPOSITORY https://github.com/ocornut/imgui.git
+)
+FetchContent_GetProperties(imgui)
+
+if(NOT imgui_POPULATED)
+    FetchContent_Populate(imgui)
+
+    set(IMGUI_FILES
+        "${imgui_SOURCE_DIR}/imgui_demo.cpp"
+        "${imgui_SOURCE_DIR}/imgui_draw.cpp"
+        "${imgui_SOURCE_DIR}/imgui_widgets.cpp"
+        "${imgui_SOURCE_DIR}/imgui_tables.cpp"
+        "${imgui_SOURCE_DIR}/imgui.cpp"        
+    )
+
+    add_library(imgui "${IMGUI_FILES}")
+
+    target_include_directories(TARGET INTERFACE "${imgui_SOURCE_DIR}")
+endif()
+
+# ------------------ IMGUI for SFML------------------
+message(STATUS "Fetching Imgui for SMFL...")
+FetchContent_Declare(
+    imguisfml
+    GIT_REPOSITORY https://github.com/eliasdaler/imgui-sfml.git
+)
+FetchContent_GetProperties(imguisfml)
+
+if(NOT imguisfml)
+    FetchContent_Populate(imguisfml)
+
+    set(imguisfml_FILES
+        "${imguisfml_SOURCE_DIR}/imconfig-SFML.h"
+        "${imguisfml_SOURCE_DIR}/imgui-SFML.cpp"
+        "${imguisfml_SOURCE_DIR}/imgui-SFML.h"
+        "${imguisfml_SOURCE_DIR}/imgui-SFML_export.h"    
+    )
+
+    add_library(imguisfml "${imguisfml_FILES}")
+    target_link_libraries (imguisfml imgui sfml-graphics sfml-audio sfml-network sfml-window sfml-system)
+
+    target_include_directories(imguisfml PUBLIC "${imgui_SOURCE_DIR}")
+    target_include_directories(TARGET PUBLIC "${imguisfml_SOURCE_DIR}")
+endif()
+
+target_link_libraries(TARGET
+    sfml-graphics
+    sfml-audio
+    sfml-network
+    sfml-window
+    sfml-system
+    imgui
+    imguisfml
+)
