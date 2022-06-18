@@ -8,7 +8,6 @@ FetchContent_Declare(
     GIT_TAG             _TAG_
     GIT_SHALLOW         TRUE
 )
-FetchContent_GetProperties(wxWidgets)
 FetchContent_MakeAvailable(wxWidgets)
 
 target_link_libraries(_TARGET_ wxnet wxcore wxbase)
