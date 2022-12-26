@@ -24,6 +24,11 @@ if(NOT sph_POPULATED)
 	add_subdirectory("${sph_SOURCE_DIR}" "${sph_BINARY_DIR}")
 endif()
 
+...
+
+# Utilities needs to be linked too. it's an additional target the library needs
+target_link_libraries(TARGET SPlisHSPlasH Utilities)
+
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
 
