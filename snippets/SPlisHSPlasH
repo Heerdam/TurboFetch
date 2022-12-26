@@ -1,0 +1,54 @@
+
+# ------------------ SPH ------------------
+message(STATUS "Fetching SPlisHSPlasH...")
+FetchContent_Declare(
+	sph
+	GIT_REPOSITORY        https://github.com/InteractiveComputerGraphics/SPlisHSPlasH.git
+	GIT_TAG               TAG
+	GIT_SHALLOW           TRUE
+)
+
+if(NOT sph_POPULATED)
+    #important: avx is used for some kernels. if you want to use them you need to set to single precision
+    #if you use single precision, set single precision of cuda n-search too
+    #there is a cpu version of the n-search if you dont want to use cuda
+	set(USE_DOUBLE_PRECISION OFF CACHE BOOL "Use double precision" FORCE)
+	set(USE_AVX ON CACHE BOOL "Use AVX" FORCE)
+	set(USE_GPU_NEIGHBORHOOD_SEARCH ON CACHE BOOL "Use GPU neighborhood search" FORCE)
+	set(CUNSEARCH_USE_DOUBLE_PRECISION OFF CACHE BOOL "" FORCE)
+	set(SPH_LIBS_ONLY ON CACHE BOOL "" FORCE)
+
+	FetchContent_Populate(sph)
+    # the next line is very important or it will not find the cmake folder
+	set(CMAKE_MODULE_PATH "${sph_SOURCE_DIR}/CMake" ${CMAKE_MODULE_PATH})
+	add_subdirectory("${sph_SOURCE_DIR}" "${sph_BINARY_DIR}")
+endif()
+
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+following a minimal example on how to initialise this library in main.cpp
+
+some notes: 
+    * it seems you need to set the defines if you want to use avx or gpu n-search
+    * the includes should be in this order and the INIT macros need to be called like this. else it will have linking error
+      because of the very strange design choices made
+
+------------------------------------------------------------------------
+#define USE_AVX
+#define GPU_NEIGHBORHOOD_SEARCH
+
+#include <SPlisHSPlasH/Simulation.h>
+
+#include <Utilities/Logger.h>
+#include <Utilities/Timing.h>
+#include <Utilities/Counting.h>
+
+INIT_LOGGING
+INIT_TIMING
+INIT_COUNTING
+
+int main() {
+    return EXIT_SUCCESS;
+}
+------------------------------------------------------------------------
