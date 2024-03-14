@@ -5,8 +5,7 @@ set(wxBUILD_MONOLITHIC OFF CACHE BOOL "Build a single library")
 FetchContent_Declare(
     wxWidgets 
     GIT_REPOSITORY      https://github.com/wxWidgets/wxWidgets.git
-    GIT_TAG             _TAG_
-    GIT_SHALLOW         TRUE
+    GIT_TAG             v3.2.4
 )
 FetchContent_MakeAvailable(wxWidgets)
 

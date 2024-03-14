@@ -2,8 +2,7 @@
 FetchContent_Declare(
     uriparser
     GIT_REPOSITORY      https://github.com/uriparser/uriparser.git
-    GIT_TAG             _TAG_
-    GIT_SHALLOW         TRUE
+    GIT_TAG             uriparser-0.9.7
 )
 FetchContent_GetProperties(uriparser)
 if(NOT uriparser_POPULATED)

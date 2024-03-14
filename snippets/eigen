@@ -3,12 +3,7 @@
 FetchContent_Declare(
 	eigen3
 	GIT_REPOSITORY      https://gitlab.com/libeigen/eigen.git
-	GIT_SHALLOW         TRUE
-	GIT_TAG             77c66e368c7e355f8be299659f57b0ffcaedb505 
+	GIT_TAG             3.4.0 
 )
-FetchContent_GetProperties(eigen3)
 
-if(NOT eigen3_POPULATED)
-	FetchContent_Populate(eigen3)
-	target_include_directories(_TARGET_ PUBLIC "${eigen3_SOURCE_DIR}")
-endif()
+FetchContent_MakeAvailable(eigen3)
